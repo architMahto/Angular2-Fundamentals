@@ -18,4 +18,9 @@ export class EventThumbnailComponent {
     handleClickMe() {
         this.eventClick.emit(this.event.name);
     }
+
+    getStartedTimeClass() {
+        const isEarlyStart = this.event && this.event.time === "8:00 am";
+        return {green: isEarlyStart, bold: isEarlyStart};
+    }
 }
