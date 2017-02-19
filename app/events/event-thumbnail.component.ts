@@ -3,6 +3,7 @@ import { Component,
          Output,
          EventEmitter
        } from "@angular/core";
+import { IEvent } from "./shared/index";
 
 @Component({
     moduleId: module.id,
@@ -12,7 +13,7 @@ import { Component,
 })
 
 export class EventThumbnailComponent {
-    @Input() event: any;
+    @Input() event: IEvent;
     @Output() eventClick = new EventEmitter();
 
     handleClickMe() {
