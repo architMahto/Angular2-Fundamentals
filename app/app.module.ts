@@ -17,6 +17,7 @@ import {
 
 import { EventsAppComponent } from "./events.app.component";
 
+import { AuthService } from "./users/auth.service";
 import { ToastrService } from "./common/toastr.service";
 import { appRoutes } from "./routes";
 
@@ -42,6 +43,7 @@ import { appRoutes } from "./routes";
             provide: "canDeactivateCreateEvent",
             useValue: checkDirtyState
         },
+        AuthService,
         ToastrService
     ],
     bootstrap: [

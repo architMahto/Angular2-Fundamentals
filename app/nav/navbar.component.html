@@ -25,15 +25,24 @@
                         <span class="caret"></span>
                     </a>
                     <ul class="dropdown-menu">
-                        <li><a href="">Angular Connect</a></li>
+                        <li><a>Angular Connect</a></li>
                     </ul>
                 </li>
             </ul>
 
             <div class="navbar-header navbar-right">
                 <ul class="nav navbar-nav">
+                    <li >
+                    </li>
                     <li>
-                        <a [routerLink]="['/users/profile']">Welcome John</a>
+                        <a *ngIf="!authService.isAuthenticated()"
+                           [routerLink]="['/users/login']">
+                            Login
+                        </a>
+                        <a *ngIf="authService.isAuthenticated()"
+                           [routerLink]="['/users/profile']">
+                            Welcome {{ authService.currentUser.firstName }}
+                        </a>
                     </li>
                 </ul>
             </div>
