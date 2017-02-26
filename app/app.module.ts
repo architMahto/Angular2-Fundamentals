@@ -8,6 +8,7 @@ import { Error404Component } from "./errors/404.component";
 
 import {
     EventThumbnailComponent,
+    CreateSessionComponent,
     EventDetailsComponent,
     EventsListComponent,
     CreateEventComponent,
@@ -35,6 +36,7 @@ import { appRoutes } from "./routes";
         EventsAppComponent,
         EventsListComponent,
         EventThumbnailComponent,
+        CreateSessionComponent,
         EventDetailsComponent,
         CreateEventComponent
     ],
