@@ -19,6 +19,7 @@ import {
 } from "./events/index";
 
 import { EventsAppComponent } from "./events.app.component";
+import { CollapsibleWellComponent } from "./common/collapsible-well.component";
 
 import { AuthService } from "./users/auth.service";
 import { ToastrService } from "./common/toastr.service";
@@ -40,7 +41,8 @@ import { appRoutes } from "./routes";
         CreateSessionComponent,
         SessionListComponent,
         EventDetailsComponent,
-        CreateEventComponent
+        CreateEventComponent,
+        CollapsibleWellComponent
     ],
     providers: [
         EventsService,
