@@ -23,8 +23,10 @@ import { EventsAppComponent } from "./events.app.component";
 import { CollapsibleWellComponent } from "./common/collapsible-well.component";
 
 import { AuthService } from "./users/auth.service";
-import { ToastrService } from "./common/toastr.service";
+import { TOASTR_TOKEN, Toastr } from "./common/toastr.service";
 import { appRoutes } from "./routes";
+
+declare let toastr: Toastr;
 
 @NgModule({
     imports: [
@@ -55,7 +57,10 @@ import { appRoutes } from "./routes";
             useValue: checkDirtyState
         },
         AuthService,
-        ToastrService
+        {
+            provide: TOASTR_TOKEN,
+            useValue: toastr
+        }
     ],
     bootstrap: [
         EventsAppComponent
