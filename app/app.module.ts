@@ -20,13 +20,19 @@ import {
 } from "./events/index";
 
 import { EventsAppComponent } from "./events.app.component";
-import { CollapsibleWellComponent } from "./common/collapsible-well.component";
 
 import { AuthService } from "./users/auth.service";
-import { TOASTR_TOKEN, Toastr } from "./common/toastr.service";
+import {
+    JQ_TOKEN,
+    TOASTR_TOKEN,
+    Toastr,
+    CollapsibleWellComponent,
+    SimpleModalComponent
+} from './common/index';
 import { appRoutes } from "./routes";
 
 declare let toastr: Toastr;
+declare let jQuery: Object;
 
 @NgModule({
     imports: [
@@ -46,6 +52,7 @@ declare let toastr: Toastr;
         EventDetailsComponent,
         CreateEventComponent,
         CollapsibleWellComponent,
+        SimpleModalComponent,
         DurationPipe
     ],
     providers: [
@@ -60,6 +67,10 @@ declare let toastr: Toastr;
         {
             provide: TOASTR_TOKEN,
             useValue: toastr
+        },
+        {
+            provide: JQ_TOKEN,
+            useValue: jQuery
         }
     ],
     bootstrap: [
