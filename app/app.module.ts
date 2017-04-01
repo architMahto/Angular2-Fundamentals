@@ -13,7 +13,9 @@ import {
     EventDetailsComponent,
     EventsListComponent,
     CreateEventComponent,
+    UpvoteComponent,
     EventsService,
+    VotersService,
     EventRouteActivator,
     EventListResolver,
     DurationPipe
@@ -53,6 +55,7 @@ declare let jQuery: Object;
         EventDetailsComponent,
         CreateEventComponent,
         CollapsibleWellComponent,
+        UpvoteComponent,
         SimpleModalComponent,
         ModalTriggerDirective,
         DurationPipe
@@ -61,6 +64,7 @@ declare let jQuery: Object;
         EventsService,
         EventRouteActivator,
         EventListResolver,
+        VotersService,
         {
             provide: "canDeactivateCreateEvent",
             useValue: checkDirtyState
