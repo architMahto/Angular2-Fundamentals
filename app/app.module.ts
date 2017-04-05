@@ -16,6 +16,7 @@ import {
     UpvoteComponent,
     EventsService,
     VotersService,
+    LocationValidator,
     EventRouteActivator,
     EventListResolver,
     DurationPipe
@@ -57,6 +58,7 @@ declare let jQuery: Object;
         CollapsibleWellComponent,
         UpvoteComponent,
         SimpleModalComponent,
+        LocationValidator,
         ModalTriggerDirective,
         DurationPipe
     ],
