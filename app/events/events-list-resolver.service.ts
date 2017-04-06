@@ -10,6 +10,6 @@ export class EventListResolver implements Resolve<any> {
     resolve() {
         // We are mapping the returned observable to return the list
         // of events on that stream
-        return this.eventsService.getEvents().map(events => events);
+        return this.eventsService.getEvents();
     }
 }
