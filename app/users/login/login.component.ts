@@ -10,6 +10,8 @@ import { AuthService } from "../auth.service";
 })
 
 export class LoginComponent {
+    loginInvalid = false;
+
     constructor(
         private authService: AuthService,
         private router: Router
@@ -19,8 +21,14 @@ export class LoginComponent {
         this.authService.loginUser(
             formValues.userName,
             formValues.password
-        );
-        this.router.navigate(["events"]);
+        )
+        .subscribe(response => {
+          if (!response) {
+            this.loginInvalid = true;
+          } else {
+            this.router.navigate(["events"]);
+          }
+        });
     }
 
     cancel() {
