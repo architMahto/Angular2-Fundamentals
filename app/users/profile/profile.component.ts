@@ -48,8 +48,10 @@ export class ProfileComponent implements OnInit {
             this.authService.updateCurrentUser(
                 formValues.firstName,
                 formValues.lastName
-            );
-            this.toastr.success("Profile Saved");
+            )
+            .subscribe(() => {
+                this.toastr.success("Profile Saved");
+            });
         }
     }
 
