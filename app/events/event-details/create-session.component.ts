@@ -1,49 +1,49 @@
-import { Component, OnInit, Output, EventEmitter } from "@angular/core";
+import { Component, EventEmitter, OnInit, Output } from "@angular/core";
 import { FormControl, FormGroup, Validators } from "@angular/forms";
 import { ISession, restrictedWords } from "../shared/index";
 
 @Component({
     moduleId: module.id,
     selector: "create-session",
+    styleUrls: ["create-session.component.css"],
     templateUrl: "create-session.component.html",
-    styleUrls: ["create-session.component.css"]
 })
 
 export class CreateSessionComponent {
     @Output()
-    saveNewSession = new EventEmitter();
+    public saveNewSession = new EventEmitter();
 
     @Output()
-    cancelAddSession = new EventEmitter();
+    public cancelAddSession = new EventEmitter();
 
-    newSessionForm: FormGroup;
+    public newSessionForm: FormGroup;
 
-    name: FormControl;
+    public name: FormControl;
 
-    presenter: FormControl;
+    public presenter: FormControl;
 
-    duration: FormControl;
+    public duration: FormControl;
 
-    level: FormControl;
+    public level: FormControl;
 
-    abstract: FormControl;
+    public abstract: FormControl;
 
-    ngOnInit() {
+    public ngOnInit() {
         this.name = new FormControl(
             "",
-            Validators.required
+            Validators.required,
         );
         this.presenter = new FormControl(
             "",
-            Validators.required
+            Validators.required,
         );
         this.duration = new FormControl(
             "",
-            Validators.required
+            Validators.required,
         );
         this.level = new FormControl(
             "",
-            Validators.required
+            Validators.required,
         );
         this.abstract = new FormControl(
             "",
@@ -52,35 +52,35 @@ export class CreateSessionComponent {
                 Validators.maxLength(400),
                 restrictedWords([
                     "foo",
-                    "bar"
-                ])
-            ]
+                    "bar",
+                ]),
+            ],
         );
 
         this.newSessionForm = new FormGroup({
-            name: this.name,
-            presenter: this.presenter,
+            abstract: this.abstract,
             duration: this.duration,
             level: this.level,
-            abstract: this.abstract
+            name: this.name,
+            presenter: this.presenter,
         });
     }
 
-    saveSession(formValues) {
+    public saveSession(formValues) {
         let session: ISession = {
-            id: undefined,
-            name: formValues.name,
-            duration: +formValues.duration,
-            level: formValues.level,
-            presenter: formValues.presenter,
             abstract: formValues.abstract,
-            voters: []
+            duration: +formValues.duration,
+            id: undefined,
+            level: formValues.level,
+            name: formValues.name,
+            presenter: formValues.presenter,
+            voters: [],
         };
 
         this.saveNewSession.emit(session);
     }
 
-    cancel() {
+    public cancel() {
         this.cancelAddSession.emit();
     }
 }

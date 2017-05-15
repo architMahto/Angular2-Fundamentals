@@ -3,14 +3,14 @@ import { Component, Input } from "@angular/core";
 @Component({
     moduleId: module.id,
     selector: "collapsible-well",
+    styleUrls: ["collapsible-well.component.css"],
     templateUrl: "collapsible-well.component.html",
-    styleUrls: ["collapsible-well.component.css"]
 })
 
 export class CollapsibleWellComponent {
-    visible = true;
+    public visible = true;
 
-    toggleContent() {
+    public toggleContent() {
         this.visible = !this.visible;
     }
 }

@@ -3,28 +3,25 @@ import { Component, EventEmitter, Input, Output  } from "@angular/core";
 @Component({
   moduleId: module.id,
   selector: "upvote",
+  styleUrls: ["upvote.component.css"],
   templateUrl: "upvote.component.html",
-  styleUrls: ["upvote.component.css"]
 })
 
 export class UpvoteComponent {
   @Input()
-  count: number;
+  public count: number;
 
   @Input()
   set voted(val) {
-    this.iconColor = val ? 'red' : 'white';
+    this.iconColor = val ? "red" : "white";
   }
 
   @Output()
-  vote = new EventEmitter();
+  public vote = new EventEmitter();
 
-  iconColor: string;
+  public iconColor: string;
 
-  constructor() {
-  }
-
-  onClick() {
+  public onClick() {
     this.vote.emit({});
   }
 }

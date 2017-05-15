@@ -2,10 +2,8 @@ import { Component } from "@angular/core";
 
 @Component({
     moduleId: module.id,
+    styleUrls: ["404.component.css"],
     templateUrl: "404.component.html",
-    styleUrls: ["404.component.css"]
 })
 
-export class Error404Component {
-    constructor() {}
-}
+export class Error404Component {}
