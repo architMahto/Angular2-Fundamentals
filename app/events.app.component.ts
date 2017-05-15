@@ -1,13 +1,13 @@
 import { Component, OnInit } from "@angular/core";
 
-import { AuthService } from './users/auth.service';
+import { AuthService } from "./users/auth.service";
 
 @Component({
     selector: "events-app",
     template: `
         <nav-bar></nav-bar>
         <router-outlet></router-outlet>
-    `
+    `,
 })
 
 export class EventsAppComponent implements OnInit {

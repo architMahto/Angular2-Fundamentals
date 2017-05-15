@@ -1,68 +1,72 @@
 import { NgModule } from "@angular/core";
+import { FormsModule, ReactiveFormsModule } from "@angular/forms";
+import { HttpModule } from "@angular/http";
 import { BrowserModule } from "@angular/platform-browser";
 import { RouterModule } from "@angular/router";
-import { HttpModule } from '@angular/http';
-import { FormsModule, ReactiveFormsModule } from "@angular/forms";
-
-import { NavBarComponent } from "./nav/navbar.component";
 import { Error404Component } from "./errors/404.component";
+import { NavBarComponent } from "./nav/navbar.component";
 
 import {
-    EventThumbnailComponent,
-    CreateSessionComponent,
-    SessionListComponent,
-    EventDetailsComponent,
-    EventsListComponent,
+    CollapsibleWellComponent,
+    JQ_TOKEN,
+    ModalTriggerDirective,
+    SimpleModalComponent,
+    Toastr,
+    TOASTR_TOKEN,
+} from "./common/index";
+
+import {
     CreateEventComponent,
-    UpvoteComponent,
-    EventsService,
-    VotersService,
-    LocationValidator,
-    EventResolver,
+    CreateSessionComponent,
+    DurationPipe,
+    EventDetailsComponent,
     EventListResolver,
-    DurationPipe
+    EventResolver,
+    EventsListComponent,
+    EventsService,
+    EventThumbnailComponent,
+    LocationValidator,
+    SessionListComponent,
+    UpvoteComponent,
+    VotersService,
 } from "./events/index";
 
 import { EventsAppComponent } from "./events.app.component";
 
-import { AuthService } from "./users/auth.service";
-import {
-    JQ_TOKEN,
-    TOASTR_TOKEN,
-    Toastr,
-    CollapsibleWellComponent,
-    SimpleModalComponent,
-    ModalTriggerDirective
-} from './common/index';
 import { appRoutes } from "./routes";
+
+import { AuthService } from "./users/auth.service";
 
 declare let toastr: Toastr;
 declare let jQuery: Object;
 
 @NgModule({
+    bootstrap: [
+        EventsAppComponent,
+    ],
+    declarations: [
+        CreateEventComponent,
+        CreateSessionComponent,
+        CollapsibleWellComponent,
+        DurationPipe,
+        Error404Component,
+        EventsAppComponent,
+        EventDetailsComponent,
+        EventsListComponent,
+        EventThumbnailComponent,
+        LocationValidator,
+        ModalTriggerDirective,
+        NavBarComponent,
+        SessionListComponent,
+        SimpleModalComponent,
+        UpvoteComponent,
+    ],
     imports: [
         BrowserModule,
         FormsModule,
         HttpModule,
         ReactiveFormsModule,
-        RouterModule.forRoot(appRoutes)
-    ],
-    declarations: [
-        NavBarComponent,
-        Error404Component,
-        EventsAppComponent,
-        EventsListComponent,
-        EventThumbnailComponent,
-        CreateSessionComponent,
-        SessionListComponent,
-        EventDetailsComponent,
-        CreateEventComponent,
-        CollapsibleWellComponent,
-        UpvoteComponent,
-        SimpleModalComponent,
-        LocationValidator,
-        ModalTriggerDirective,
-        DurationPipe
+        RouterModule.forRoot(appRoutes),
     ],
     providers: [
         EventsService,
@@ -71,21 +75,18 @@ declare let jQuery: Object;
         VotersService,
         {
             provide: "canDeactivateCreateEvent",
-            useValue: checkDirtyState
+            useValue: checkDirtyState,
         },
         AuthService,
         {
             provide: TOASTR_TOKEN,
-            useValue: toastr
+            useValue: toastr,
         },
         {
             provide: JQ_TOKEN,
-            useValue: jQuery
-        }
+            useValue: jQuery,
+        },
     ],
-    bootstrap: [
-        EventsAppComponent
-    ]
 })
 
 export class AppModule {

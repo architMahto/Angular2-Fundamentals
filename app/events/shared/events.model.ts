@@ -8,7 +8,7 @@ export interface IEvent {
     location?: {
         address: string,
         city: string,
-        country: string
+        country: string,
     };
     onlineUrl?: string;
     sessions: ISession[];

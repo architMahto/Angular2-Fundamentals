@@ -5,24 +5,24 @@ import { AuthService } from "../auth.service";
 
 @Component({
     moduleId: module.id,
+    styleUrls: ["login.component.css"],
     templateUrl: "login.component.html",
-    styleUrls: ["login.component.css"]
 })
 
 export class LoginComponent {
-    loginInvalid = false;
+    public loginInvalid = false;
 
     constructor(
         private authService: AuthService,
-        private router: Router
+        private router: Router,
     ) {}
 
-    login(formValues) {
+    public login(formValues) {
         this.authService.loginUser(
             formValues.userName,
-            formValues.password
+            formValues.password,
         )
-        .subscribe(response => {
+        .subscribe((response) => {
           if (!response) {
             this.loginInvalid = true;
           } else {
@@ -31,7 +31,7 @@ export class LoginComponent {
         });
     }
 
-    cancel() {
+    public cancel() {
         this.router.navigate(["events"]);
     }
 }

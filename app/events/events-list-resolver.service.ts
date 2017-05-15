@@ -7,7 +7,7 @@ import { EventsService } from "./shared/events.service";
 export class EventListResolver implements Resolve<any> {
     constructor(private eventsService: EventsService) {}
 
-    resolve() {
+    public resolve() {
         // We are mapping the returned observable to return the list
         // of events on that stream
         return this.eventsService.getEvents();

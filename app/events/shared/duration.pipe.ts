@@ -1,11 +1,11 @@
 import { Pipe, PipeTransform } from "@angular/core";
 
 @Pipe({
-    name: "duration"
+    name: "duration",
 })
 
 export class DurationPipe implements PipeTransform {
-    transform(value: number): string {
+    public transform(value: number): string {
         switch (value) {
             case 1:
                 return "Half Hour";

@@ -1,23 +1,23 @@
 import { ModuleWithProviders } from "@angular/core";
-import { Routes, RouterModule } from "@angular/router";
+import { RouterModule, Routes } from "@angular/router";
 
-import { ProfileComponent } from "./profile/profile.component";
 import { LoginComponent } from "./login/login.component";
+import { ProfileComponent } from "./profile/profile.component";
 
 const usersRoutes: Routes = [
     {
-        path: "",
         children: [
             {
+                component: ProfileComponent,
                 path: "profile",
-                component: ProfileComponent
             },
             {
+                component: LoginComponent,
                 path: "login",
-                component: LoginComponent
-            }
-        ]
-    }
+            },
+        ],
+        path: "",
+    },
 ];
 
 export const usersRouting: ModuleWithProviders = RouterModule.forChild(usersRoutes);

@@ -5,26 +5,26 @@ import { EventsService } from "./shared/index";
 
 @Component({
     moduleId: module.id,
+    styleUrls: ["create-event.component.css"],
     templateUrl: "create-event.component.html",
-    styleUrls: ["create-event.component.css"]
 })
 
 export class CreateEventComponent {
-    isDirty = true;
+    public isDirty = true;
 
     constructor(
         private router: Router,
-        private eventsService: EventsService
+        private eventsService: EventsService,
     ) {}
 
-    saveEvent(formValues) {
-        this.eventsService.saveEvent(formValues).subscribe(event => {
+    public saveEvent(formValues) {
+        this.eventsService.saveEvent(formValues).subscribe((event) => {
           this.isDirty = false;
           this.router.navigate(["/events"]);
         });
     }
 
-    cancel() {
+    public cancel() {
         this.router.navigate(["/events"]);
     }
 }

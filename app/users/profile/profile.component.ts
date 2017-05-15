@@ -1,53 +1,53 @@
-import { Component, OnInit, Inject } from "@angular/core";
+import { Component, Inject, OnInit } from "@angular/core";
 import { FormControl, FormGroup, Validators } from "@angular/forms";
 import { Router } from "@angular/router";
 
+import { Toastr, TOASTR_TOKEN } from "../../common/toastr.service";
 import { AuthService } from "../auth.service";
-import { TOASTR_TOKEN, Toastr } from "../../common/toastr.service";
 
 @Component({
     moduleId: module.id,
+    styleUrls: ["profile.component.css"],
     templateUrl: "profile.component.html",
-    styleUrls: ["profile.component.css"]
 })
 
 export class ProfileComponent implements OnInit {
-    profileForm: FormGroup;
+    public profileForm: FormGroup;
     private firstName: FormControl;
     private lastName: FormControl;
 
     constructor(
         private router: Router,
         private authService: AuthService,
-        @Inject(TOASTR_TOKEN) private toastr: Toastr
+        @Inject(TOASTR_TOKEN) private toastr: Toastr,
     ) {
 
     }
 
-    ngOnInit() {
+    public ngOnInit() {
         this.firstName = new FormControl(
             this.authService.currentUser.firstName,
             [
                 Validators.required,
-                Validators.pattern("[a-zA-Z].*")
-            ]
+                Validators.pattern("[a-zA-Z].*"),
+            ],
         );
         this.lastName = new FormControl(
             this.authService.currentUser.lastName,
-            Validators.required
+            Validators.required,
         );
 
         this.profileForm = new FormGroup({
             firstName: this.firstName,
-            lastName: this.lastName
+            lastName: this.lastName,
         });
     }
 
-    saveProfile(formValues) {
+    public saveProfile(formValues) {
         if (this.profileForm.valid) {
             this.authService.updateCurrentUser(
                 formValues.firstName,
-                formValues.lastName
+                formValues.lastName,
             )
             .subscribe(() => {
                 this.toastr.success("Profile Saved");
@@ -55,21 +55,21 @@ export class ProfileComponent implements OnInit {
         }
     }
 
-    logout() {
+    public logout() {
         this.authService.logout().subscribe(() => {
-            this.router.navigate(['/user/login']);
+            this.router.navigate(["/user/login"]);
         });
     }
 
-    validateFirstName() {
+    public validateFirstName() {
         return this.firstName.valid || this.firstName.untouched;
     }
 
-    validateLastName() {
+    public validateLastName() {
         return this.lastName.valid || this.lastName.untouched;
     }
 
-    cancel() {
+    public cancel() {
         this.router.navigate(["events"]);
     }
 }

@@ -8,14 +8,14 @@ export function restrictedWords(words) {
 
         let invalidWords = words
             .map(
-                word => control.value.includes(word) ? word : null
+                (word) => control.value.includes(word) ? word : null,
             )
             .filter(
-                word => word != null
+                (word) => word != null,
             );
 
         return invalidWords && invalidWords.length > 0
-            ? {"restrictedWords": invalidWords.join(", ")}
+            ? {restrictedWords: invalidWords.join(", ")}
             : null;
     };
 }
