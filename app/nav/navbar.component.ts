@@ -12,7 +12,7 @@ import { AuthService } from "../users/auth.service";
 
 export class NavBarComponent {
   public searchTerm = "";
-  public foundSessions: ISession[];
+  public foundSessions: any;
 
   constructor (
     private authService: AuthService,

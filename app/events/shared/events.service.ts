@@ -8,7 +8,7 @@ import { IEvent, ISession } from "./events.model";
 export class EventsService {
   constructor(private http: Http) {}
 
-  public getEvents(): Observable<IEvent[]> {
+  public getEvents(): Observable<any> {
     return this.http.get("/api/events")
             .map((response: Response) => {
               return <IEvent[]> response.json();
@@ -16,7 +16,7 @@ export class EventsService {
             .catch(this.handleError);
   }
 
-  public getEvent(id: number): Observable<IEvent> {
+  public getEvent(id: number): Observable<any> {
     return this.http.get("/api/events/" + id)
             .map((response: Response) => {
               return <IEvent> response.json();
@@ -24,7 +24,7 @@ export class EventsService {
             .catch(this.handleError);
   }
 
-  public saveEvent(event): Observable<IEvent> {
+  public saveEvent(event): Observable<any> {
     let headers = new Headers({ "Content-Type": "application/json" });
     let options = new RequestOptions({ headers });
 

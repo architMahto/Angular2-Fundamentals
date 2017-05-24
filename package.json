@@ -36,10 +36,11 @@
   },
   "devDependencies": {
     "@types/core-js": "~0.9.34",
-    "@types/node": "~6.0.46",
+    "@types/node": "^6.0.73",
     "concurrently": "2.2.0",
     "tslint": "^5.2.0",
-    "typescript": "~2.0.3"
+    "typescript": "~2.0.3",
+    "typings": "^2.1.1"
   },
   "repository": {}
 }
