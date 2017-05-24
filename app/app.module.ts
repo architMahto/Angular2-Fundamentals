@@ -5,6 +5,7 @@ import { BrowserModule } from "@angular/platform-browser";
 import { RouterModule } from "@angular/router";
 import { Error404Component } from "./errors/404.component";
 import { NavBarComponent } from "./nav/navbar.component";
+import "./rxjs-extensions";
 
 import {
     CollapsibleWellComponent,
